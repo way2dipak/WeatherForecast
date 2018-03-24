@@ -55,8 +55,12 @@ class Forecast: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func AlertMsg(msg: String)
     {
         let alertview = UIAlertController.init(title: "Message", message: msg, preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: "OK", style: .destructive, handler: nil)
-        alertview.addAction(ok)
+//        let ok = UIAlertAction.init(title: "OK", style: .destructive, handler: nil)
+        let retry  = UIAlertAction.init(title: "Retry", style: .destructive) { (handler) in
+            
+            self.fetchWeather(self.city)
+        }
+        alertview.addAction(retry)
         self.present(alertview, animated: true, completion: nil)
         
     }
