@@ -83,7 +83,7 @@ class Forecast: UIViewController, UITableViewDataSource, UITableViewDelegate {
             guard error == nil else{
                 print("oops! might be some problem...!!")
                 self.view.isUserInteractionEnabled = true
-                self.AlertMsg(msg: "\(error?.localizedDescription)")
+                self.AlertMsg(msg: "\(error!.localizedDescription)")
                 SVProgressHUD.dismiss()
                 return
             }
