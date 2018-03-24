@@ -156,7 +156,7 @@ class Forecast: UIViewController, UITableViewDataSource, UITableViewDelegate {
         /////////////////////////////////////////////////////////////////////
         let get_min = Double(((self.weatherArray.value(forKey: "main") as! NSArray).value(forKey: "temp_min") as! NSArray).object(at: indexPath.row) as! NSNumber)
         
-        let convrt_min = Int(ceil(get_min))
+        let convrt_min = Int(floor(get_min))
         
         cell.minTemp.text = String(convrt_min)
         /////////////////////////////////////////////////////////////////////
