@@ -6,6 +6,8 @@ target 'WeatherHub' do
   use_frameworks!
 
   # Pods for WeatherHub
+
     pod 'SwiftyGif'
+    pod 'SDWebImage'
 
 end

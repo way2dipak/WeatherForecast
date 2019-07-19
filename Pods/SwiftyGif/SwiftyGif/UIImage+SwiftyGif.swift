@@ -4,6 +4,7 @@
 
 import ImageIO
 import UIKit
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -24,7 +25,6 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-
 let _imageSourceKey = malloc(4)
 let _displayRefreshFactorKey = malloc(4)
 let _imageCountKey = malloc(4)
@@ -32,8 +32,7 @@ let _displayOrderKey = malloc(4)
 let _imageSizeKey = malloc(4)
 let _imageDataKey = malloc(4)
 
-let defaultLevelOfIntegrity: Float = 0.8
-
+public let defaultLevelOfIntegrity: Float = 0.8
 
 fileprivate enum GifParseError:Error {
     case noImages
@@ -42,45 +41,26 @@ fileprivate enum GifParseError:Error {
     case noTimingInfo
 }
 
-
 public extension UIImage {
     
     // MARK: Inits
     
     /**
-     Convenience initializer. Creates a gif with its backing data. Defaulted level of integrity.
-     - Parameter gifData: The actual gif data
-     */
-    public convenience init(gifData:Data) {
-        self.init()
-        setGifFromData(gifData,levelOfIntegrity: defaultLevelOfIntegrity)
-    }
-    
-    /**
      Convenience initializer. Creates a gif with its backing data.
      - Parameter gifData: The actual gif data
      - Parameter levelOfIntegrity: 0 to 1, 1 meaning no frame skipping
      */
-    public convenience init(gifData:Data, levelOfIntegrity:Float) {
+    public convenience init(gifData:Data, levelOfIntegrity:Float = defaultLevelOfIntegrity) {
         self.init()
         setGifFromData(gifData,levelOfIntegrity: levelOfIntegrity)
     }
     
     /**
-     Convenience initializer. Creates a gif with its backing data. Defaulted level of integrity.
-     - Parameter gifName: Filename
-     */
-    public convenience init(gifName: String) {
-        self.init()
-        setGif(gifName, levelOfIntegrity: defaultLevelOfIntegrity)
-    }
-    
-    /**
      Convenience initializer. Creates a gif with its backing data.
      - Parameter gifName: Filename
      - Parameter levelOfIntegrity: 0 to 1, 1 meaning no frame skipping
      */
-    public convenience init(gifName: String, levelOfIntegrity: Float) {
+    public convenience init(gifName: String, levelOfIntegrity: Float = defaultLevelOfIntegrity) {
         self.init()
         setGif(gifName, levelOfIntegrity: levelOfIntegrity)
     }
@@ -297,7 +277,7 @@ public extension UIImage {
             return (result as! CGImageSource)
         }
         set {
-            objc_setAssociatedObject(self, _imageSourceKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, _imageSourceKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -306,7 +286,7 @@ public extension UIImage {
             return objc_getAssociatedObject(self, _displayRefreshFactorKey!) as? Int
         }
         set {
-            objc_setAssociatedObject(self, _displayRefreshFactorKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, _displayRefreshFactorKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -315,7 +295,7 @@ public extension UIImage {
             return objc_getAssociatedObject(self, _imageSizeKey!) as? Int
         }
         set {
-            objc_setAssociatedObject(self, _imageSizeKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, _imageSizeKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -324,7 +304,7 @@ public extension UIImage {
             return objc_getAssociatedObject(self, _imageCountKey!) as? Int
         }
         set {
-            objc_setAssociatedObject(self, _imageCountKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, _imageCountKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -333,7 +313,7 @@ public extension UIImage {
             return objc_getAssociatedObject(self, _displayOrderKey!) as? [Int]
         }
         set {
-            objc_setAssociatedObject(self, _displayOrderKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, _displayOrderKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -346,7 +326,7 @@ public extension UIImage {
             return (result as? Data)
         }
         set {
-            objc_setAssociatedObject(self, _imageDataKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, _imageDataKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
 }

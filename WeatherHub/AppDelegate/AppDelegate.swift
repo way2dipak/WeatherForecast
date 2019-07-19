@@ -14,65 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var screen_height = Int()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let screen = ScreenSize()
-        screen_height = screen.screen_height()
-        print("appdelegate->screen_height = \(screen_height)")
-        
-        
-        if screen_height == 812
-        {
-            print("iphonex")
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "iphoneX", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "choose") as! chooseCity
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let nvc = UINavigationController.init(rootViewController: initialViewControlleripad)
-            nvc.isNavigationBarHidden = true
-            self.window?.rootViewController = nvc
-            // UINavigationController.init(rootViewController: initialViewControlleripad)
-            self.window?.makeKeyAndVisible()
-        }
-        else if screen_height == 736
-        {
-             print("iphonePlus")
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "iphoneplus", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "choose") as! chooseCity
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let nvc = UINavigationController.init(rootViewController: initialViewControlleripad)
-            nvc.isNavigationBarHidden = true
-            self.window?.rootViewController = nvc
-            // UINavigationController.init(rootViewController: initialViewControlleripad)
-            self.window?.makeKeyAndVisible()
-        }
-        else if screen_height == 667
-        {
-             print("iphone")
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "choose") as! chooseCity
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let nvc = UINavigationController.init(rootViewController: initialViewControlleripad)
-            nvc.isNavigationBarHidden = true
-            self.window?.rootViewController = nvc
-            // UINavigationController.init(rootViewController: initialViewControlleripad)
-            self.window?.makeKeyAndVisible()
-        }
-        else if screen_height == 568
-        {
-             print("iphoneSE")
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "iphoneSE", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "choose") as! chooseCity
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let nvc = UINavigationController.init(rootViewController: initialViewControlleripad)
-            nvc.isNavigationBarHidden = true
-            self.window?.rootViewController = nvc
-            // UINavigationController.init(rootViewController: initialViewControlleripad)
-            self.window?.makeKeyAndVisible()
-        }
-        
-        
-    
         
         return true
     }

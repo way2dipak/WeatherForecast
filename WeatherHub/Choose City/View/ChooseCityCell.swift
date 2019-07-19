@@ -2,23 +2,25 @@
 //  ChooseCityCell.swift
 //  WeatherHub
 //
-//  Created by KAMLESH KUMAR on 22/03/18.
-//  Copyright © 2018 kamlesh kumar. All rights reserved.
+//  Created by DIPAK KUMAR on 22/03/18.
+//  Copyright © 2018 Dipak kumar. All rights reserved.
 //
 
 import UIKit
 
-class ChooseCityCell: UITableViewCell {
+class ChooseCityTableViewCell: UITableViewCell {
     
+    static let identifier = "ChooseCityCell"
     
-    @IBOutlet weak var city_name: UILabel!
-    @IBOutlet weak var city_img: UIImageView!
-    @IBOutlet weak var line: UIView!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var cityImageView: UIImageView!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        cityImageView.layer.cornerRadius = cityImageView.frame.height/2
+        cityImageView.clipsToBounds = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
